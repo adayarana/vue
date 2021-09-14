@@ -1,19 +1,20 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
-        <Button />
+        <button>Add Movie</button>
     </header>
 </template>
 
 <script>
-import Button from './Button.vue'
 export default {
     name: 'Header',
     props: {
-        title: String,
+        title: {
+            type: String,
+            default: 'MyApp',
+        }
     },
     components: {
-        Button,
     }
 }
 </script>
