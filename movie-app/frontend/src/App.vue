@@ -1,30 +1,56 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="container">
+    <Header title="MovieApp"/>
+    <!-- <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link> -->
   </div>
   <router-view/>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import Header from './components/Header.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Header
+  }
 }
 
-#nav {
+</script>
+
+<style lang="scss">
+@import './sass/var.scss';
+
+* {
+  font-family: 'Roboto', sans-serif;
+  background: $secondary;
+  color: $primary;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
   padding: 30px;
+  text-align: center;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+button {
+    all: unset;
+    color: $secondary;
+    border: 2px solid;
+    cursor: pointer;
+    text-align: center;
+    background: $accent;
+    width: 100px;
+    height: 33px;
+    border-radius: 50em;
+    transition: background linear 1s;
+    box-shadow: 1px 0.5px 0.5px 0.5px $accent;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+button:hover {
+  background: $accent-hover;
 }
 </style>
