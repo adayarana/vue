@@ -55,7 +55,7 @@
 5. Run frontend
 
     ### `cd vue/movie-app/frontend/`
-    ### `npm start`
+    ### `npm run serve`
 
 6. Run test
 
