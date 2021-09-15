@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <Header title="MovieApp"/>
+    <Movies @delete-movie="deleteMovie" :movies="movies"/>
     <!-- <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> -->
   </div>
@@ -9,13 +10,44 @@
 
 <script>
 import Header from './components/Header.vue';
+import Movies from './components/Movies.vue';
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    Movies
+  },
+  data() {
+    return {
+      movies: {
+        type: Array,
+        default: []
+      }
+    };
+  },
+  methods: {
+    deleteMovie(id) {
+      console.log('movie', id);
+    }
+  },
+  created() {
+    this.movies = [
+      {
+        id: 0,
+        title: 'The Matrix',
+        year: 1999,
+        score: 8.7
+      },
+      {
+        id: 1,
+        title: 'The Fight Club',
+        year: 1999,
+        score: 8.8
+      }
+    ];
   }
-}
+};
 
 </script>
 
@@ -23,7 +55,7 @@ export default {
 @import './sass/var.scss';
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   background: $secondary;
   color: $primary;
   box-sizing: border-box;
