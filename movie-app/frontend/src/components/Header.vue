@@ -1,22 +1,25 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
-        <button>Add Movie</button>
+        <button v-on:click="doSomething">Add Movie</button>
     </header>
 </template>
 
 <script>
 export default {
-    name: 'Header',
-    props: {
-        title: {
-            type: String,
-            default: 'MyApp',
-        }
-    },
-    components: {
+  name: 'Header',
+  props: {
+    title: {
+      type: String,
+      default: 'MyApp'
     }
-}
+  },
+  methods: {
+    doSomething() {
+      console.log('pringao');
+    }
+  }
+};
 </script>
 
 <style scoped>
