@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <Header title="MovieApp"/>
-    <Movies @delete-movie="deleteMovie" :movies="movies"/>
+    <CreateMovie @add-movie="addMovie" />
+    <Movies @delete-movie="deleteMovie" @toggle="toggle" :movies="movies"/>
     <!-- <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> -->
   </div>
@@ -11,12 +12,14 @@
 <script>
 import Header from './components/Header.vue';
 import Movies from './components/Movies.vue';
+import CreateMovie from './components/CreateMovie.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
-    Movies
+    Movies,
+    CreateMovie
   },
   data() {
     return {
@@ -27,8 +30,20 @@ export default {
     };
   },
   methods: {
+    addMovie(newMovie) {
+      this.movies = [...this.movies, newMovie];
+    },
     deleteMovie(id) {
-      console.log('movie', id);
+      if (confirm('Are you sure?')) {
+        this.movies = this.movies.filter((movie) => movie.id !== id);
+        console.log('movie', id);
+      }
+    },
+    toggle(id) {
+      this.movies = this.movies.map((movie) => (movie.id === id ? {
+        ...movie,
+        favourite: !movie.favourite
+      } : movie));
     }
   },
   created() {
@@ -37,13 +52,15 @@ export default {
         id: 0,
         title: 'The Matrix',
         year: 1999,
-        score: 8.7
+        score: 8.7,
+        favourite: false
       },
       {
         id: 1,
         title: 'The Fight Club',
         year: 1999,
-        score: 8.8
+        score: 8.8,
+        favourite: true
       }
     ];
   }
@@ -84,5 +101,32 @@ button {
 
 button:hover {
   background: $accent-hover;
+}
+
+input {
+    cursor: pointer;
+    border-radius: 15%;
+    border: 1.5px solid $primary;
+    width: 100px;
+    height: 30px;
+    outline: none;
+    text-align: center;
+    transition: background linear 1s;
+    margin: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  input:hover {
+    background: $primary;
+    color: $secondary;
+  }
+
+input:focus {
+    border: 3px solid $primary;
+  }
+
+label {
+  margin: 0.5rem;
+  padding: 0.25rem;
 }
 </style>

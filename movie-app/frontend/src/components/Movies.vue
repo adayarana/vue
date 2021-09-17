@@ -3,13 +3,17 @@
 <div
 v-for="movie in movies"
 :key="movie.id"
-@delete-movie="$emit('deleteMovie', movie.id)">
+@delete-movie="$emit('deleteMovie', movie.id)"
+>
+
 <h3>
     {{ movie.title }}
-    <em v-on:click="onDelete(movie.id)" class="fas fa-times"></em>
+    <em v-on:click="$emit('deleteMovie', movie.id)" class="fas fa-times"></em>
 </h3>
 <h4>{{ movie.year }}</h4>
-<h5 :class="[movie.score > 8.7 ? 'masterpiece' : '']">{{ movie.score }}</h5>
+<h5
+v-on:dblclick="$emit('toggle', movie.id)"
+:class="[movie.favourite === true ? 'favourite' : '']">{{ movie.score }}</h5>
 </div>
 </div>
 </template>
@@ -20,18 +24,16 @@ export default {
   props: {
     movies: Array
   },
-  methods: {
-    onDelete(id) {
-      this.$emit('deleteMovie', id);
-      console.log(`ID ${id} in component Movie`);
-    }
-  },
-  emits: ['deleteMovie']
+  emits: ['deleteMovie', 'toggle']
 };
 </script>
 
 <style lang="scss" scoped>
 @import '../sass/var.scss';
+
+h5 {
+  cursor: pointer;
+}
 
 div {
     margin: 5px;
@@ -42,7 +44,7 @@ div {
     color: $alternative;
 }
 
-.masterpiece {
+.favourite {
     color: $accent;
 }
 
