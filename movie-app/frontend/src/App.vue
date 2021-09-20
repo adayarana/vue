@@ -1,8 +1,18 @@
 <template>
   <div class="container">
-    <Header title="MovieApp"/>
-    <CreateMovie @add-movie="addMovie" />
-    <Movies @delete-movie="deleteMovie" @toggle="toggle" :movies="movies"/>
+    <Header
+    title="MovieApp"
+    @toggleCreateMovie="toggleCreateMovie"
+    :showCreateMovie="showCreateMovie"
+    />
+    <div v-if="showCreateMovie">
+    <CreateMovie @addMovie="addMovie" />
+    </div>
+    <Movies
+    @deleteMovie="deleteMovie"
+    @handleFavourite="handleFavourite"
+    :movies="movies"
+    />
     <!-- <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> -->
   </div>
@@ -26,12 +36,16 @@ export default {
       movies: {
         type: Array,
         default: []
-      }
+      },
+      showCreateMovie: false
     };
   },
   methods: {
     addMovie(newMovie) {
       this.movies = [...this.movies, newMovie];
+    },
+    toggleCreateMovie() {
+      this.showCreateMovie = !this.showCreateMovie;
     },
     deleteMovie(id) {
       if (confirm('Are you sure?')) {
@@ -39,30 +53,22 @@ export default {
         console.log('movie', id);
       }
     },
-    toggle(id) {
+    handleFavourite(id) {
       this.movies = this.movies.map((movie) => (movie.id === id ? {
         ...movie,
         favourite: !movie.favourite
       } : movie));
+    },
+    async fetchMovies() {
+      const res = await fetch('http://localhost:5000/movie-app/favourites');
+
+      const data = await res.json();
+
+      return data;
     }
   },
-  created() {
-    this.movies = [
-      {
-        id: 0,
-        title: 'The Matrix',
-        year: 1999,
-        score: 8.7,
-        favourite: false
-      },
-      {
-        id: 1,
-        title: 'The Fight Club',
-        year: 1999,
-        score: 8.8,
-        favourite: true
-      }
-    ];
+  async created() {
+    this.movies = await this.fetchMovies();
   }
 };
 
@@ -116,7 +122,7 @@ input {
     padding: 0.25rem;
   }
 
-  input:hover {
+input:hover {
     background: $primary;
     color: $secondary;
   }
