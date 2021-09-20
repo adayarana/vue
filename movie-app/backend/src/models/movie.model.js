@@ -13,6 +13,9 @@ const movieSchema = Schema({
   score: {
     type: Number,
     required: true
+  },
+  favourite: {
+    type: Boolean
   }
 }, {
   timestamps: true
