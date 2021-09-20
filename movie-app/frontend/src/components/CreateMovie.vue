@@ -1,6 +1,6 @@
 <template>
 <form
-    @add-movie="$emit('addMovie', newMovie)"
+    @addMovie="$emit('addMovie', newMovie)"
     v-on:submit="onSubmit"
     action=""
     >

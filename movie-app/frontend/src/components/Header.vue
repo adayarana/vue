@@ -1,7 +1,9 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
-        <button v-on:click="doSomething">Add Movie</button>
+        <button v-on:click="$emit('toggleCreateMovie')">
+        {{ showCreateMovie ? 'Close' : 'Add Movie' }}
+        </button>
     </header>
 </template>
 
@@ -12,13 +14,10 @@ export default {
     title: {
       type: String,
       default: 'MyApp'
-    }
+    },
+    showCreateMovie: Boolean
   },
-  methods: {
-    doSomething() {
-      console.log('pringao');
-    }
-  }
+  emits: ['toggleCreateMovie']
 };
 </script>
 
