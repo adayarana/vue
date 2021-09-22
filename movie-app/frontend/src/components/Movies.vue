@@ -1,8 +1,11 @@
 <template>
 <div>
+   <button v-on:click="$emit('toggleCreateMovie')">
+        {{ showCreateMovie ? 'Close' : 'Add Movie' }}
+      </button>
 <div
-v-for="movie in movies"
-:key="movie.id"
+v-for="(movie, index) in movies"
+:key="index"
 @deleteMovie="$emit('deleteMovie', movie.id)"
 >
 <h3>
@@ -24,9 +27,10 @@ v-on:click="$emit('handleFavourite', movie.id)"
 export default {
   name: 'Movies',
   props: {
-    movies: Object
+    movies: Object,
+    showCreateMovie: Boolean
   },
-  emits: ['deleteMovie', 'handleFavourite']
+  emits: ['deleteMovie', 'handleFavourite', 'toggleCreateMovie']
 };
 </script>
 
