@@ -6,21 +6,21 @@ module.exports = {
   },
   extends: [
     'plugin:vue/essential',
-    'airbnb-base',
+    'airbnb-base'
   ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: [
-    'vue',
+    'vue'
   ],
   rules: {
     'no-underscore-dangle': 0,
     'comma-dangle': [2, 'never']
-  },
+  }
 };

@@ -1,9 +1,7 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
-        <button v-on:click="$emit('toggleCreateMovie')">
-        {{ showCreateMovie ? 'Close' : 'Add Movie' }}
-        </button>
+        <router-link to="/filmography">Filmography</router-link>
     </header>
 </template>
 
@@ -14,10 +12,8 @@ export default {
     title: {
       type: String,
       default: 'MyApp'
-    },
-    showCreateMovie: Boolean
-  },
-  emits: ['toggleCreateMovie']
+    }
+  }
 };
 </script>
 
