@@ -10,7 +10,7 @@ v-for="(movie, index) in movies"
 >
 <h3>
     {{ movie.title }}
-    <em v-on:click="$emit('deleteMovie', movie.id)" class="fas fa-times"></em>
+    <em v-on:click="$emit('deleteMovie', movie.id)" class="fas fa-trash"></em>
 </h3>
 <h4>{{ movie.year }}</h4>
 <h5>{{ movie.score }}</h5>
@@ -24,11 +24,22 @@ v-on:click="$emit('handleFavourite', movie.id)"
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
+
 export default {
   name: 'Movies',
   props: {
-    movies: Object,
     showCreateMovie: Boolean
+  },
+  computed: {
+    ...mapState([
+      'movies'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      ''
+    ])
   },
   emits: ['deleteMovie', 'handleFavourite', 'toggleCreateMovie']
 };

@@ -1,6 +1,5 @@
 <template>
 <form
-    @addMovie="$emit('addMovie', newMovie)"
     v-on:submit="onSubmit"
     action=""
     >
@@ -61,6 +60,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'CreateMovie',
   data() {
@@ -72,26 +73,27 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'createMovie'
+    ]),
     onSubmit(e) {
       e.preventDefault();
 
       const newMovie = {
-        id: Math.floor(Math.random() * 1000),
         title: this.title,
         year: this.year,
         score: this.score,
         favourite: this.favourite
       };
 
-      this.$emit('addMovie', newMovie);
+      this.createMovie(newMovie);
 
       this.title = '';
       this.year = '';
       this.score = '';
       this.favourite = false;
     }
-  },
-  emits: ['addMovie']
+  }
 };
 </script>
 

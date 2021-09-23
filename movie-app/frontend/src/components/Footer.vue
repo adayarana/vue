@@ -12,7 +12,7 @@
           <p><a href="/">Privacy Policy</a></p>
         </div>
         <div className="details__info">
-          <p>Powered by Movie API</p>
+          <p>Powered by TV Maze API</p>
           <p>Made with 🤍 💙 💛 in 🇮🇨</p>
           <p>Copyright 2021 © @adayarana</p>
         </div>
