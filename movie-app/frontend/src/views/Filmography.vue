@@ -2,19 +2,18 @@
   <div class="filmography">
     <CreateMovie
     v-if="showCreateMovie"
-    @addMovie="addMovie"
     />
     <Movies
     @toggleCreateMovie="toggleCreateMovie"
     :showCreateMovie="showCreateMovie"
     @deleteMovie="deleteMovie"
     @handleFavourite="handleFavourite"
-    :movies="movies"
     />
   </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 import Movies from '../components/Movies.vue';
 import CreateMovie from '../components/CreateMovie.vue';
 
@@ -26,17 +25,18 @@ export default {
   },
   data() {
     return {
-      movies: {
-        type: Array,
-        default: []
-      },
       showCreateMovie: false
     };
   },
+  computed: {
+    ...mapState([
+      'movies'
+    ])
+  },
   methods: {
-    addMovie(newMovie) {
-      this.movies = [...this.movies, newMovie];
-    },
+    ...mapActions([
+      'getAllMovies'
+    ]),
     toggleCreateMovie() {
       this.showCreateMovie = !this.showCreateMovie;
     },
@@ -51,17 +51,10 @@ export default {
         ...movie,
         favourite: !movie.favourite
       } : movie));
-    },
-    async fetchMovies() {
-      const res = await fetch('http://localhost:5000/movie-app/favourites');
-
-      const data = await res.json();
-
-      return data;
     }
   },
-  async created() {
-    this.movies = await this.fetchMovies();
+  mounted() {
+    this.getAllMovies();
   }
 };
 </script>
