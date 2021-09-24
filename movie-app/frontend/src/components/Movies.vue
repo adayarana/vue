@@ -6,11 +6,10 @@
 <div
 v-for="(movie, index) in movies"
 :key="index"
-@deleteMovie="$emit('deleteMovie', movie.id)"
 >
 <h3>
     {{ movie.title }}
-    <em v-on:click="$emit('deleteMovie', movie.id)" class="fas fa-trash"></em>
+    <em v-on:click="deleteMovie(movie.id)" class="fas fa-trash"></em>
 </h3>
 <h4>{{ movie.year }}</h4>
 <h5>{{ movie.score }}</h5>
@@ -38,10 +37,10 @@ export default {
   },
   methods: {
     ...mapActions([
-      ''
+      'deleteMovie'
     ])
   },
-  emits: ['deleteMovie', 'handleFavourite', 'toggleCreateMovie']
+  emits: ['handleFavourite', 'toggleCreateMovie']
 };
 </script>
 

@@ -8,6 +8,5 @@ export default createStore({
   actions,
   getters,
   mutations,
-  state,
-  modules: { }
+  state
 });
