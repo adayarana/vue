@@ -1,6 +1,6 @@
 <template>
 <form
-    v-on:submit="onSubmit"
+    @submit="onSubmit"
     action=""
     >
     <div>
