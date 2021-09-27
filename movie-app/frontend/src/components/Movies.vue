@@ -1,23 +1,29 @@
 <template>
 <div>
-   <button v-on:click="$emit('toggleCreateMovie')">
+   <button @click="$emit('toggleCreateMovie')">
         {{ showCreateMovie ? 'Close' : 'Add Movie' }}
-      </button>
+   </button>
 <div
 v-for="(movie, index) in movies"
 :key="index"
 >
 <h3>
     {{ movie.title }}
-    <em v-on:click="deleteMovie(movie.id)" class="fas fa-trash"></em>
+    <em @click="deleteMovie(movie.id)" class="fas fa-trash"></em>
 </h3>
 <h4>{{ movie.year }}</h4>
 <h5>{{ movie.score }}</h5>
 <p
-v-on:click="$emit('handleFavourite', movie.id)"
+@click="handleFavouriteMovie(movie.id)"
 >
-  <em class="far fa-star" :class="[movie.favourite === true ? 'fas fa-star' : 'far fa-star']"></em>
+  <em :class="[movie.favourite === true ? 'fas fa-star' : 'far fa-star']"></em>
 </p>
+</div>
+<div v-if="movies.length > 1">
+  <button @click="deleteAllMovies">Delete All</button>
+</div>
+<div v-else-if="movies.length === 0">
+<p>No movies yet</p>
 </div>
 </div>
 </template>
@@ -37,10 +43,12 @@ export default {
   },
   methods: {
     ...mapActions([
-      'deleteMovie'
+      'deleteMovie',
+      'deleteAllMovies',
+      'handleFavouriteMovie'
     ])
   },
-  emits: ['handleFavourite', 'toggleCreateMovie']
+  emits: ['toggleCreateMovie']
 };
 </script>
 

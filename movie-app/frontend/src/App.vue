@@ -58,6 +58,7 @@ button:hover {
 }
 
 input {
+    caret-color: $accent;
     cursor: pointer;
     border-radius: 15%;
     border: 1.5px solid $primary;
