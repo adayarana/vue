@@ -6,7 +6,7 @@ export default {
   },
 
   createMovie(state, payload) {
-    state.movies = [...payload];
+    state.movies.push(payload);
   },
 
   getMovieById(state, id) {
@@ -29,7 +29,7 @@ export default {
   },
 
   deleteAllMovies(state) {
-    state.movies = state;
+    state.movies = [];
   }
 
 };
