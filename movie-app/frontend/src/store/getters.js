@@ -1,5 +1,5 @@
 export default {
-  getAllMovies(state) {
+  getNewMovies(state) {
     return state.movies;
   }
 };

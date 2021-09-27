@@ -7,23 +7,21 @@
 v-for="(movie, index) in movies"
 :key="index"
 >
-<h3>
+  <h3>
     {{ movie.title }}
     <em @click="deleteMovie(movie.id)" class="fas fa-trash"></em>
-</h3>
-<h4>{{ movie.year }}</h4>
-<h5>{{ movie.score }}</h5>
-<p
-@click="handleFavouriteMovie(movie.id)"
->
+  </h3>
+  <h4>{{ movie.year }}</h4>
+  <h5>{{ movie.score }}</h5>
+  <p @click="handleFavouriteMovie(movie.id)">
   <em :class="[movie.favourite === true ? 'fas fa-star' : 'far fa-star']"></em>
-</p>
+  </p>
 </div>
 <div v-if="movies.length > 1">
   <button @click="deleteAllMovies">Delete All</button>
 </div>
 <div v-else-if="movies.length === 0">
-<p>No movies yet</p>
+  <p>No movies yet</p>
 </div>
 </div>
 </template>
