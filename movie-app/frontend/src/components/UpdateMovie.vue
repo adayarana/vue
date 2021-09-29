@@ -66,7 +66,15 @@
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'CreateMovie',
+  name: 'UpdateMovie',
+  data() {
+    return {
+      title: '',
+      year: '',
+      score: '',
+      favourite: false
+    };
+  },
   methods: {
     ...mapActions([
       'updateMovie'
@@ -81,7 +89,7 @@ export default {
         favourite: this.favourite
       };
 
-      this.updateMovie(newMovie);
+      this.createMovie(newMovie);
 
       this.title = '';
       this.year = '';
