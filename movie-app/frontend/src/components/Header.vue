@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
-        <router-link to="/filmography">Filmography</router-link>
+        <router-link to="/filmography" exact tag="li"><a>Filmography</a></router-link>
     </header>
 </template>
 
@@ -17,11 +17,18 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../sass/var.scss';
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
+
+.router-link-exact-active > a {
+  color: $accent;
+}
+
 </style>

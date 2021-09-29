@@ -1,11 +1,16 @@
 <template>
   <div class="filmography">
-    <CreateMovie
-    v-if="showCreateMovie"
-    />
+    <div>
+      <div v-if="editMovie">
+        <UpdateMovie />
+      </div>
+      <div v-else>
+        <CreateMovie />
+      </div>
+    </div>
     <Movies
-    @toggleCreateMovie="toggleCreateMovie"
-    :showCreateMovie="showCreateMovie"
+    @toggleEditMovie="toggleEditMovie"
+    :editMovie="editMovie"
     />
   </div>
 </template>
@@ -14,16 +19,18 @@
 import { mapActions, mapState } from 'vuex';
 import Movies from '../components/Movies.vue';
 import CreateMovie from '../components/CreateMovie.vue';
+import UpdateMovie from '../components/UpdateMovie.vue';
 
 export default {
   name: 'Filmography',
   components: {
     Movies,
-    CreateMovie
+    CreateMovie,
+    UpdateMovie
   },
   data() {
     return {
-      showCreateMovie: false
+      editMovie: false
     };
   },
   computed: {
@@ -35,8 +42,8 @@ export default {
     ...mapActions([
       'getAllMovies'
     ]),
-    toggleCreateMovie() {
-      this.showCreateMovie = !this.showCreateMovie;
+    toggleEditMovie() {
+      this.editMovie = !this.editMovie;
     }
   },
   mounted() {

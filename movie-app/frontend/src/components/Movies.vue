@@ -1,8 +1,8 @@
 <template>
 <div>
-   <button @click="$emit('toggleCreateMovie')">
+   <!-- <button @click="$emit('toggleCreateMovie')">
         {{ showCreateMovie ? 'Close' : 'Add Movie' }}
-   </button>
+   </button> -->
 <div
 v-for="(movie, index) in movies"
 :key="index"
@@ -10,9 +10,10 @@ v-for="(movie, index) in movies"
   <h3>
     {{ movie.title }}
     <em @click="deleteMovie(movie.id)" class="fas fa-trash"></em>
+    <em @click="$emit('toggleEditMovie')" class="fas fa-pencil-alt"></em>
   </h3>
   <h4>{{ movie.year }}</h4>
-  <h5>{{ movie.score }}</h5>
+  <h4>{{ movie.score }}</h4>
   <p @click="handleFavouriteMovie(movie.id)">
   <em :class="[movie.favourite === true ? 'fas fa-star' : 'far fa-star']"></em>
   </p>
@@ -32,7 +33,7 @@ import { mapActions, mapState } from 'vuex';
 export default {
   name: 'Movies',
   props: {
-    showCreateMovie: Boolean
+    editMovie: Boolean
   },
   computed: {
     ...mapState([
@@ -46,19 +47,23 @@ export default {
       'handleFavouriteMovie'
     ])
   },
-  emits: ['toggleCreateMovie']
+  emits: ['toggleEditMovie']
 };
 </script>
 
 <style lang="scss" scoped>
 @import '../sass/var.scss';
 
+* {
+  margin: 0.25rem;
+}
+
 div {
     margin: 5px;
     padding: 10px 20px;
 }
 
-.fas {
+.fas, .far {
     color: $alternative;
 }
 

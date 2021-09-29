@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h3>New Movie</h3>
+  <h3>Update Movie</h3>
   <form
     @submit="onSubmit"
     action=""
@@ -55,7 +55,7 @@
     </div>
     <input
     type="submit"
-    value="Add"
+    value="Update"
     class="btn"
     >
 </form>
@@ -66,7 +66,7 @@
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'CreateMovie',
+  name: 'UpdateMovie',
   data() {
     return {
       title: '',
@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'createMovie'
+      'updateMovie'
     ]),
     onSubmit(e) {
       e.preventDefault();
