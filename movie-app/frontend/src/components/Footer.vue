@@ -7,7 +7,7 @@
       </div>
       <div className="footer-container__details">
         <div className="details__text">
-          <p><router-link to="/about">About Us</router-link></p>
+          <p><router-link to="/about" exact tag="a">About Us</router-link></p>
           <p><a href="/">Terms of use</a></p>
           <p><a href="/">Privacy Policy</a></p>
         </div>
