@@ -3,6 +3,14 @@
    <!-- <button @click="$emit('toggleCreateMovie')">
         {{ showCreateMovie ? 'Close' : 'Add Movie' }}
    </button> -->
+<div>
+      <div v-if="editMovie">
+        <UpdateMovie :movie="movie" />
+      </div>
+      <div v-else>
+        <CreateMovie />
+      </div>
+    </div>
 <div
 v-for="(movie, index) in movies"
 :key="index"
@@ -10,11 +18,11 @@ v-for="(movie, index) in movies"
   <h3>
     {{ movie.title }}
     <em @click="deleteMovie(movie.id)" class="fas fa-trash"></em>
-    <em @click="$emit('toggleEditMovie')" class="fas fa-pencil-alt"></em>
+    <em @click="toggleEditMovie(movie)" class="fas fa-pencil-alt"></em>
   </h3>
   <h4>{{ movie.year }}</h4>
   <h4>{{ movie.score }}</h4>
-  <p @click="handleFavouriteMovie(movie.id)">
+  <p @click="handleFavouriteMovie(movie)">
   <em :class="[movie.favourite === true ? 'fas fa-star' : 'far fa-star']"></em>
   </p>
 </div>
@@ -29,11 +37,29 @@ v-for="(movie, index) in movies"
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import CreateMovie from './CreateMovie.vue';
+import UpdateMovie from './UpdateMovie.vue';
 
 export default {
   name: 'Movies',
-  props: {
-    editMovie: Boolean
+  components: {
+    CreateMovie,
+    UpdateMovie
+  },
+  data() {
+    return {
+      movie: {
+        type: Object,
+        default: {
+          id: '',
+          title: '',
+          year: '',
+          score: '',
+          favourite: false
+        }
+      },
+      editMovie: false
+    };
   },
   computed: {
     ...mapState([
@@ -45,9 +71,12 @@ export default {
       'deleteMovie',
       'deleteAllMovies',
       'handleFavouriteMovie'
-    ])
-  },
-  emits: ['toggleEditMovie']
+    ]),
+    toggleEditMovie(movie) {
+      this.editMovie = !this.editMovie;
+      this.movie = movie;
+    }
+  }
 };
 </script>
 

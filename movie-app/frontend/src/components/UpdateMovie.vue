@@ -10,7 +10,7 @@
         <input
         id="title"
         name="title"
-        v-model="title"
+        v-model="this.movie.title"
         type="text"
         placeholder="Add Title"
         required
@@ -21,7 +21,7 @@
         <input
         id="year"
         name="year"
-        v-model="year"
+        v-model="this.movie.year"
         type="number"
         min="1900"
         max="2022"
@@ -34,7 +34,7 @@
         <input
         id="score"
         name="score"
-        v-model="score"
+        v-model="this.movie.score"
         type="number"
         step=0.01
         min="0"
@@ -48,7 +48,7 @@
         <input
         id="favourite"
         name="favourite"
-        v-model="favourite"
+        v-model="this.movie.favourite"
         type="checkbox"
         class="favourite"
         >
@@ -67,13 +67,8 @@ import { mapActions } from 'vuex';
 
 export default {
   name: 'UpdateMovie',
-  data() {
-    return {
-      title: '',
-      year: '',
-      score: '',
-      favourite: false
-    };
+  props: {
+    movie: Object
   },
   methods: {
     ...mapActions([
@@ -83,18 +78,14 @@ export default {
       e.preventDefault();
 
       const newMovie = {
-        title: this.title,
-        year: this.year,
-        score: this.score,
-        favourite: this.favourite
+        id: this.movie.id,
+        title: this.movie.title,
+        year: this.movie.year,
+        score: this.movie.score,
+        favourite: this.movie.favourite
       };
 
-      this.createMovie(newMovie);
-
-      this.title = '';
-      this.year = '';
-      this.score = '';
-      this.favourite = false;
+      this.updateMovie(newMovie);
     }
   }
 };

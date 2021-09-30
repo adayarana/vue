@@ -5,20 +5,20 @@ export default {
     state.movies = [...payload];
   },
 
-  createMovie(state, payload) {
-    state.movies.push(payload);
+  createMovie(state, newMovie) {
+    state.movies.push(newMovie);
   },
 
   getMovieById(state, id) {
     state.movie = id;
   },
 
-  updateMovie(state, payload) {
-    state.movie = { ...payload };
+  updateMovie(state, newMovie) {
+    state.movie = { ...newMovie };
   },
 
-  handleFavouriteMovie(state, id) {
-    state.movies = this.state.movies.map((movie) => (movie.id === id ? {
+  handleFavouriteMovie(state, newMovie) {
+    state.movies = this.state.movies.map((movie) => (movie.id === newMovie.id ? {
       ...movie,
       favourite: !movie.favourite
     } : movie));
