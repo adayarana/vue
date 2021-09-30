@@ -78,18 +78,14 @@ export default {
       e.preventDefault();
 
       const newMovie = {
-        title: this.title,
-        year: this.year,
-        score: this.score,
-        favourite: this.favourite
+        id: this.movie.id,
+        title: this.movie.title,
+        year: this.movie.year,
+        score: this.movie.score,
+        favourite: this.movie.favourite
       };
 
       this.updateMovie(newMovie);
-
-      this.title = '';
-      this.year = '';
-      this.score = '';
-      this.favourite = false;
     }
   }
 };

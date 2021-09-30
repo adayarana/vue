@@ -21,9 +21,9 @@ export default {
     commit('updateMovie', newMovie);
   },
 
-  async handleFavouriteMovie({ commit }, id) {
-    await axios.put(`${process.env.VUE_APP_DDBB_MOVIES_URL}/${id}`);
-    commit('handleFavouriteMovie', id);
+  async handleFavouriteMovie({ commit }, newMovie) {
+    await axios.put(`${process.env.VUE_APP_DDBB_MOVIES_URL}/${newMovie.id}`);
+    commit('handleFavouriteMovie', newMovie);
   },
 
   async deleteMovie({ commit }, id) {

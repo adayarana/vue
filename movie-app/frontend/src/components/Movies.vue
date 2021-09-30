@@ -22,7 +22,7 @@ v-for="(movie, index) in movies"
   </h3>
   <h4>{{ movie.year }}</h4>
   <h4>{{ movie.score }}</h4>
-  <p @click="handleFavouriteMovie(movie.id)">
+  <p @click="handleFavouriteMovie(movie)">
   <em :class="[movie.favourite === true ? 'fas fa-star' : 'far fa-star']"></em>
   </p>
 </div>
@@ -51,6 +51,7 @@ export default {
       movie: {
         type: Object,
         default: {
+          id: '',
           title: '',
           year: '',
           score: '',
