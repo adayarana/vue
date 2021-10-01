@@ -1,11 +1,12 @@
 <template>
-<div>
-  <h3>New Movie</h3>
-  <form
+  <div class="filmography-container__form">
+    <h3 class="form__title">New Movie</h3>
+    <form
+    class="form__group"
     @submit="onSubmit"
     action=""
     >
-    <div>
+      <div>
         <label for="title">Title</label>
         <input
         id="title"
@@ -15,8 +16,8 @@
         placeholder="Add Title"
         required
         >
-    </div>
-    <div>
+      </div>
+      <div>
         <label for="year">Year</label>
         <input
         id="year"
@@ -28,8 +29,8 @@
         placeholder="Add Year"
         required
         >
-    </div>
-    <div>
+      </div>
+      <div>
         <label for="score">Score</label>
         <input
         id="score"
@@ -42,24 +43,24 @@
         placeholder="Add Score"
         required
         >
-    </div>
-    <div>
+      </div>
+      <div>
         <label for="favourite">Favourite</label>
         <input
         id="favourite"
         name="favourite"
         v-model="favourite"
         type="checkbox"
-        class="favourite"
+        class="form__group--favourite"
         >
-    </div>
-    <input
-    type="submit"
-    value="Add"
-    class="btn"
-    >
-</form>
-</div>
+      </div>
+      <input
+      type="submit"
+      value="Add"
+      class="form__group--button"
+      >
+    </form>
+  </div>
 </template>
 
 <script>
@@ -103,26 +104,35 @@ export default {
 <style lang="scss" scoped>
 @import '../sass/var.scss';
 
-h3 {
-  margin: 20px;
-}
+.filmography-container__form {
 
-.favourite {
-    width: 1rem;
-}
+  text-align: center;
 
-.btn {
-    border: 1.5px solid $accent;
-    color: $accent;
-}
-
-.btn:hover {
-    background: $accent;
-    color: $secondary;
+  .form__title {
+    margin: 1.2rem;
   }
 
-.btn:focus {
-    border: 3px solid $accent;
+  .form__group {
+
+    .form__group--button {
+      border: 1.5px solid $accent;
+      color: $accent;
+}
+
+    .form__group--button:hover {
+      background: $accent;
+      color: $secondary;
   }
+
+    .form__group--button:focus {
+      border: 3px solid $accent;
+  }
+
+    .form__group--favourite {
+      width: 1rem;
+}
+
+  }
+}
 
 </style>

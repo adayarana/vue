@@ -1,5 +1,5 @@
 <template>
- <footer class="footer-container">
+    <footer class="footer-container">
       <div className="footer-container__social-links">
         <em className="fab fa-github" />
         <em className="fab fa-app-store" />
@@ -7,7 +7,7 @@
       </div>
       <div className="footer-container__details">
         <div className="details__text">
-          <p><router-link to="/about" exact tag="a">About Us</router-link></p>
+          <p><a href="/">About Us</a></p>
           <p><a href="/">Terms of use</a></p>
           <p><a href="/">Privacy Policy</a></p>
         </div>
@@ -19,10 +19,6 @@
       </div>
     </footer>
 </template>
-
-<script>
-
-</script>
 
 <style lang="scss" scoped>
 @import '../sass/var.scss';
@@ -36,6 +32,10 @@
         display: flex;
         flex-direction: column;
         text-align: center;
+
+        p {
+            font-weight: bold;
+        }
 
         .details__info {
             padding: 1rem;

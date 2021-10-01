@@ -3,8 +3,6 @@
     <Header title="MovieApp"/>
   <router-view/>
     <Footer />
-    <!-- <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> -->
   </div>
 </template>
 
@@ -34,11 +32,6 @@ export default {
   padding: 0;
 }
 
-.app {
-  padding: 30px;
-  text-align: center;
-}
-
 button {
     all: unset;
     color: $secondary;
@@ -46,8 +39,8 @@ button {
     cursor: pointer;
     text-align: center;
     background: $accent;
-    width: 100px;
-    height: 33px;
+    width: 70px;
+    height: 30px;
     border-radius: 50em;
     transition: background linear 1s;
     box-shadow: 1px 0.5px 0.5px 0.5px $accent;
@@ -84,4 +77,13 @@ label {
   margin: 0.5rem;
   padding: 0.25rem;
 }
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 </style>
