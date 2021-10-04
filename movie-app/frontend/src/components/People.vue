@@ -5,9 +5,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 
 export default {
-  name: 'People'
+  name: 'People',
+  computed: {
+    ...mapState([
+      'people'
+    ])
+  }
 };
 
 </script>
