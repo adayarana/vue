@@ -1,6 +1,14 @@
 /* eslint-disable no-param-reassign */
 
 export default {
+  getApiShows(state, payload) {
+    state.shows = [...payload];
+  },
+
+  getApiPeople(state, payload) {
+    state.people = [...payload];
+  },
+
   getAllMovies(state, payload) {
     state.movies = [...payload];
   },
