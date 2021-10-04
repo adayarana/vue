@@ -1,14 +1,22 @@
 <template>
-  <div class="">
-    <div>
+  <div class="movies-container">
+    <div class="movies-container__component">
       <div v-if="editMovie">
         <UpdateMovie :movie="movie" />
       </div>
       <div v-else>
         <CreateMovie />
       </div>
+      <div v-if="movies.length > 1">
+      <button @click="deleteAllMovies">Delete All</button>
     </div>
-    <div
+    <div v-else-if="movies.length === 0">
+      <p>No movies yet</p>
+    </div>
+    </div>
+    <div class="movies-container__movies">
+      <div
+      class="movies__information"
       v-for="(movie, index) in movies"
       :key="index"
       >
@@ -23,12 +31,7 @@
         <em :class="[movie.favourite === true ? 'fas fa-star' : 'far fa-star']"></em>
         </p>
       </div>
-      <div v-if="movies.length > 1">
-        <button @click="deleteAllMovies">Delete All</button>
-      </div>
-      <div v-else-if="movies.length === 0">
-        <p>No movies yet</p>
-      </div>
+    </div>
   </div>
 </template>
 
@@ -80,18 +83,59 @@ export default {
 <style lang="scss" scoped>
 @import '../sass/var.scss';
 
-.fas, .far {
-    color: $alternative;
+.movies-container {
+  margin: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .movies-container__component {
+
+    button {
+      width: 100px;
+      margin: 0.5rem;
+    }
+
+  }
+
+  .movies-container__movies {
+    margin: 0.5rem;
+    padding: 0.5rem;
+
+    .movies__information, h3, h4, p {
+      margin: 0.1rem;
+      padding: 0.1rem;
+    }
+
+    em {
+      margin: 0.2rem;
+      padding: 0.2rem;
+    }
+
+    .fas, .far {
+      color: $alternative;
+    }
+
+    .fas:hover, .far:hover {
+      transform: scale(1.3) rotate(0.5turn);
+      transition: 1s;
+    }
+
+    .fa-star {
+      cursor: pointer;
+      color: $accent;
+    }
+  }
 }
 
-.fas:hover, .far:hover {
-    transform: scale(1.3) rotate(0.5turn);
-    transition: 1s;
-}
-
-.fa-star {
-  cursor: pointer;
-  color: $accent;
+@media screen and (min-width: 415px) {
+  .movies-container__movies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
 }
 
 </style>
