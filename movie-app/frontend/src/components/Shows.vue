@@ -1,15 +1,16 @@
 <template>
     <div class="shows-container">
+      <div v-if="shows.length > 0">
         <div
         v-for="(show, index) in shows"
         :key="index"
         >
-            <h3>{{ show.name }}</h3>
-            <figure>
-                <img v-bind:src="show.image.medium" alt="">
-                <figcaption></figcaption>
-            </figure>
+          <img :src="show.image.medium" :alt="show.name">
         </div>
+      </div>
+      <div v-else>
+        <p>Loading...</p>
+      </div>
     </div>
 </template>
 
