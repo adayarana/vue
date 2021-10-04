@@ -15,14 +15,14 @@
                 <router-link to="/filmography" exact tag="li"
                 class="nav-link">Filmography</router-link>
               </li>
-              <li>
-                <router-link to="/" exact tag="li" class="nav-link">
+              <!-- <li>
+                <router-link to="/log" exact tag="li" class="nav-link">
                   <a class="nav-link">{{userLogged ? 'Log Out' : 'Log In'}}</a>
                 </router-link>
               </li>
               <li>
-                <router-link to="/" exact tag="li" class="nav-link">Sign Up</router-link>
-              </li>
+                <router-link to="/signup" exact tag="li" class="nav-link">Sign Up</router-link>
+              </li> -->
               <li>
                 <button type="button" class="input-link">
                   <em class="fas fa-moon"></em>
