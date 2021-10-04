@@ -1,7 +1,5 @@
 <template>
-    <div class="people-container">
-        <p>Soy People</p>
-    </div>
+    <p>Soy People</p>
 </template>
 
 <script>
