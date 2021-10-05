@@ -15,9 +15,5 @@ export default {
   shows: {
     type: Array,
     default: []
-  },
-  people: {
-    type: Array,
-    default: []
   }
 };
