@@ -6,11 +6,6 @@ export default {
     commit('getApiShows', data);
   },
 
-  async getApiPeople({ commit }) {
-    const { data } = await axios.get(process.env.VUE_APP_API_URL_PEOPLE);
-    commit('getApiPeople', data);
-  },
-
   async getAllMovies({ commit }) {
     const { data } = await axios.get(process.env.VUE_APP_DDBB_MOVIES_URL);
     commit('getAllMovies', data);
