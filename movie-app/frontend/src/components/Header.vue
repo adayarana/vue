@@ -29,11 +29,12 @@
                 </button>
               </li>
               <li>
-                <form action="" class="nav-menu__form">
+                <form class="nav-menu__form" action="">
                   <input
                     class="input-link search"
                     id="search"
                     name="search"
+                    v-model="search"
                     type="search"
                     placeholder="Search"
                     autocomplete="off"
@@ -57,7 +58,8 @@ export default {
   data() {
     return {
       navButton: false,
-      userLogged: false
+      userLogged: false,
+      search: ''
     };
   },
   methods: {
