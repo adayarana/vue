@@ -36,6 +36,7 @@
                     name="search"
                     type="search"
                     placeholder="Search"
+                    autocomplete="off"
                     >
                 </form>
               </li>
