@@ -54,6 +54,7 @@
         display: flex;
         justify-content: center;
         font-size: 35px;
+        padding: 0.7rem;
 
         > em {
             padding: 0px 20px;
@@ -96,6 +97,7 @@
         .footer-container__social-links {
             font-size: 40px;
             cursor: pointer;
+            padding: 0.35rem;
 
             > em {
                 padding: 20px 30px;
