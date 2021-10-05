@@ -63,12 +63,6 @@ export default {
 
 }
 
-@media screen and (min-width: 415px) {
-  .slider__figure {
-    width: 1500%
-  }
-}
-
 @keyframes slider {
   0% {
     left: 0;
