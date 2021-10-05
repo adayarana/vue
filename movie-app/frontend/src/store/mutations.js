@@ -5,10 +5,6 @@ export default {
     state.shows = [...payload];
   },
 
-  getApiPeople(state, payload) {
-    state.people = [...payload];
-  },
-
   getAllMovies(state, payload) {
     state.movies = [...payload];
   },
