@@ -1,36 +1,30 @@
 <template>
   <div class="home">
     <Shows />
-    <People />
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex';
 import Shows from '../components/Shows.vue';
-import People from '../components/People.vue';
 
 export default {
   name: 'Home',
   components: {
-    Shows,
-    People
+    Shows
   },
   computed: {
     ...mapState([
-      'shows',
-      'people'
+      'shows'
     ])
   },
   methods: {
     ...mapActions([
-      'getApiShows',
-      'getApiPeople'
+      'getApiShows'
     ])
   },
   mounted() {
     this.getApiShows();
-    this.getApiPeople();
   }
 };
 </script>
