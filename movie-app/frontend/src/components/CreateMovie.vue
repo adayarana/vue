@@ -14,6 +14,7 @@
         v-model="title"
         type="text"
         placeholder="Add Title"
+        autocomplete="off"
         required
         >
       </div>
@@ -27,6 +28,7 @@
         min="1900"
         max="2022"
         placeholder="Add Year"
+        autocomplete="off"
         required
         >
       </div>
@@ -41,6 +43,7 @@
         min="0"
         max="10"
         placeholder="Add Score"
+        autocomplete="off"
         required
         >
       </div>

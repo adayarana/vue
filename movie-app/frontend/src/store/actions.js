@@ -1,6 +1,11 @@
 import axios from 'axios';
 
 export default {
+  async getApiShows({ commit }) {
+    const { data } = await axios.get(process.env.VUE_APP_API_URL_SHOWS);
+    commit('getApiShows', data);
+  },
+
   async getAllMovies({ commit }) {
     const { data } = await axios.get(process.env.VUE_APP_DDBB_MOVIES_URL);
     commit('getAllMovies', data);

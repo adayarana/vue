@@ -11,5 +11,9 @@ export default {
       score: '',
       favourite: false
     }
+  },
+  shows: {
+    type: Array,
+    default: []
   }
 };

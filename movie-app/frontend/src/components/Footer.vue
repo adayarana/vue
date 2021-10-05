@@ -1,9 +1,9 @@
 <template>
     <footer class="footer-container">
       <div className="footer-container__social-links">
-        <em className="fab fa-github" />
-        <em className="fab fa-app-store" />
-        <em className="fab fa-google" />
+        <em className="fab fa-facebook" />
+        <em className="fab fa-instagram" />
+        <em className="fab fa-twitter" />
       </div>
       <div className="footer-container__details">
         <div className="details__text">
@@ -54,6 +54,7 @@
         display: flex;
         justify-content: center;
         font-size: 35px;
+        padding: 1rem;
 
         > em {
             padding: 0px 20px;
@@ -96,6 +97,7 @@
         .footer-container__social-links {
             font-size: 40px;
             cursor: pointer;
+            padding: 0.25rem;
 
             > em {
                 padding: 20px 30px;

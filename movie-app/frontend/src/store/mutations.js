@@ -1,6 +1,10 @@
 /* eslint-disable no-param-reassign */
 
 export default {
+  getApiShows(state, payload) {
+    state.shows = [...payload];
+  },
+
   getAllMovies(state, payload) {
     state.movies = [...payload];
   },

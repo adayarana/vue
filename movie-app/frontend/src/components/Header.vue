@@ -17,7 +17,7 @@
               </li>
               <li>
                 <router-link to="/log" exact tag="li" class="nav-link">
-                  <a class="nav-link">{{userLogged ? 'Log Out' : 'Log In'}}</a>
+                  {{userLogged ? 'Log Out' : 'Log In'}}
                 </router-link>
               </li>
               <li>
@@ -29,13 +29,15 @@
                 </button>
               </li>
               <li>
-                <form action="" class="nav-menu__form">
+                <form class="nav-menu__form" action="">
                   <input
                     class="input-link search"
                     id="search"
                     name="search"
+                    v-model="search"
                     type="search"
                     placeholder="Search"
+                    autocomplete="off"
                     >
                 </form>
               </li>
@@ -56,7 +58,8 @@ export default {
   data() {
     return {
       navButton: false,
-      userLogged: false
+      userLogged: false,
+      search: ''
     };
   },
   methods: {
