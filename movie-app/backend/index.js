@@ -4,11 +4,17 @@ const debug = require('debug')('server');
 const express = require('express');
 const morgan = require('morgan');
 
+const passport = require('passport');
+
 require('dotenv').config();
 
 require('./src/config/ddbb.config');
+require('./src/passport/jwt.strategy');
+require('./src/passport/local.strategy');
 
 const routes = require('./src/routes/movie.routes');
+const authRoutes = require('./src/routes/auth.routes');
+const userRoutes = require('./src/routes/user.routes');
 
 const server = express();
 const port = process.env.PORT || 4000;
@@ -19,5 +25,11 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
 server.use('/movie-app', routes);
+server.use('/movie-app', authRoutes);
+server.use(
+  '/movie-app/user',
+  passport.authenticate('jwt', { session: false }),
+  userRoutes
+);
 
 server.listen(port, () => debug(`Server is running in ${chalk.blue(`http://localhost:${port}`)}`));
