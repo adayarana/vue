@@ -90,6 +90,10 @@ export default {
     text-align: center;
     margin: 0.75rem;
 
+    input {
+        border-radius: 24px 4px;
+    }
+
     .login-container__form {
         margin: 0.75rem;
 
