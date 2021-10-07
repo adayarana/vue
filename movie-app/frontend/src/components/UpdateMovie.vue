@@ -4,7 +4,6 @@
     <form
     class="form__group"
     @submit="onSubmit"
-    action=""
     >
       <div>
         <label for="title">Title</label>
