@@ -1,4 +1,19 @@
 export default {
+  user: {
+    type: Object,
+    default: {
+      email: '',
+      password: ''
+    }
+  },
+  token: {
+    type: String,
+    default: ''
+  },
+  userLogged: {
+    type: Boolean,
+    default: false
+  },
   movies: {
     type: Array,
     default: []

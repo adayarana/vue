@@ -5,6 +5,22 @@ export default {
     state.shows = [...payload];
   },
 
+  signup(state, payload) {
+    state.user = { ...payload.user };
+  },
+
+  login(state, payload) {
+    state.userLogged = true;
+    state.user = { ...payload.user };
+    state.token = payload.token;
+  },
+
+  logout(state) {
+    state.userLogged = false;
+    state.user = {};
+    state.token = '';
+  },
+
   getAllMovies(state, payload) {
     state.movies = [...payload];
   },
