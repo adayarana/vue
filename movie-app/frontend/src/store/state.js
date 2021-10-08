@@ -6,14 +6,8 @@ export default {
       password: ''
     }
   },
-  token: {
-    type: String,
-    default: ''
-  },
-  userLogged: {
-    type: Boolean,
-    default: false
-  },
+  token: '',
+  userLogged: false,
   movies: {
     type: Array,
     default: []
