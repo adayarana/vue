@@ -32,7 +32,7 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: Signup,
-    beforeEnter: (next) => {
+    beforeEnter: (to, from, next) => {
       if (state.userLogged) {
         next('/log');
       } else {
