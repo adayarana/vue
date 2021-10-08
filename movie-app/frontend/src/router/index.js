@@ -34,7 +34,7 @@ const routes = [
     component: Signup,
     beforeEnter: (to, from, next) => {
       if (state.userLogged) {
-        next('/log');
+        next('/filmography');
       } else {
         next();
       }

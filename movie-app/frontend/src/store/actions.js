@@ -22,7 +22,7 @@ export default {
   },
 
   async getUserToken({ commit }, token) {
-    const { data } = await axios.post(process.env.VUE_APP_DDBB_TOKEN_URL, {
+    const { data } = await axios.get(process.env.VUE_APP_DDBB_TOKEN_URL, {
       headers: {
         Authorization: `Bearer ${token}`
       }
