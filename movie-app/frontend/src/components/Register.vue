@@ -1,57 +1,60 @@
 <template>
-    <div class="login-container">
-        <h3 class="login-container__title">Create an account</h3>
-        <form
-        class="login-container__form"
-        @submit="onSubmit"
-        action=""
-        >
-            <div>
-                <label for="email"></label>
-                <p>Email:</p>
-                <input
-                class="form__button"
-                id="email"
-                name="email"
-                v-model="email"
-                type="email"
-                placeholder="Enter your email"
-                autocomplete="off"
-                required
-                >
-            </div>
-            <div>
-                <label for="password"></label>
-                <p>Password:</p>
-                <input
-                class="form__button"
-                id="password"
-                name="password"
-                v-model="password"
-                type="password"
-                placeholder="Enter your password"
-                autocomplete="off"
-                minlength="6"
-                required
-                >
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
-        <small>
-            Already have an account?
-            <router-link
-            id="log"
-            to="/log"
-            exact
-            tag="small"
+    <div class="register-container">
+        <div v-if="!userLogged">
+            <h3 class="register-container__title">Create an account</h3>
+            <form
+            class="register-container__form"
+            @submit.prevent="onSubmit"
+            method="post"
             >
-            Log In
-            </router-link>
-        </small>
+                <div>
+                    <label for="email"></label>
+                    <p>Email:</p>
+                    <input
+                    class="form__button"
+                    id="email"
+                    name="email"
+                    v-model="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    autocomplete="off"
+                    required
+                    >
+                </div>
+                <div>
+                    <label for="password"></label>
+                    <p>Password:</p>
+                    <input
+                    class="form__button"
+                    id="password"
+                    name="password"
+                    v-model="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    autocomplete="off"
+                    minlength="6"
+                    required
+                    >
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <small>
+                Already have an account?
+                <router-link
+                id="log"
+                to="/log"
+                exact
+                tag="small"
+                >
+                Log In
+                </router-link>
+            </small>
+        </div>
     </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'Register',
@@ -61,7 +64,16 @@ export default {
       password: ''
     };
   },
+  computed: {
+    ...mapState([
+      'userLogged'
+    ])
+  },
   methods: {
+    ...mapActions([
+      'signup',
+      'login'
+    ]),
     onSubmit(e) {
       e.preventDefault();
 
@@ -70,10 +82,13 @@ export default {
         password: this.password
       };
 
-      console.log(user);
+      this.signup(user);
+      this.login(user);
 
       this.email = '';
       this.password = '';
+
+      this.$router.push('log');
     }
   }
 };
@@ -83,7 +98,7 @@ export default {
 <style lang="scss" scoped>
 @import '../sass/var.scss';
 
-.login-container {
+.register-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,7 +109,7 @@ export default {
         border-radius: 24px 4px;
     }
 
-    .login-container__form {
+    .register-container__form {
         margin: 0.75rem;
 
         > button {
@@ -102,7 +117,7 @@ export default {
         }
     }
 
-    > small, #log {
+    small, #log {
         font-weight: bold;
         margin: 0.5rem;
 
@@ -130,9 +145,9 @@ export default {
 
 @media screen and (min-width: 415px) {
 
-    .login-container {
+    .register-container {
 
-        > h3 {
+        h3 {
             display: none;
         }
 

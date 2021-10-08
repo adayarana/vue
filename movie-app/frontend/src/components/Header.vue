@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'Header',
   props: {
@@ -58,9 +60,13 @@ export default {
   data() {
     return {
       navButton: false,
-      userLogged: false,
       search: ''
     };
+  },
+  computed: {
+    ...mapState([
+      'userLogged'
+    ])
   },
   methods: {
     toggleHeader() {

@@ -6,6 +6,30 @@ export default {
     commit('getApiShows', data);
   },
 
+  async signup({ commit }, user) {
+    const { data } = await axios.post(process.env.VUE_APP_DDBB_SIGNUP_URL, user);
+    commit('signup', data);
+  },
+
+  async login({ commit }, user) {
+    const { data } = await axios.post(process.env.VUE_APP_DDBB_LOGIN_URL, user);
+    commit('login', data);
+  },
+
+  async logout({ commit }) {
+    const { data } = await axios.post(process.env.VUE_APP_DDBB_LOGOUT_URL);
+    commit('logout', data);
+  },
+
+  async getUserToken({ commit }, token) {
+    const { data } = await axios.post(process.env.VUE_APP_DDBB_TOKEN_URL, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    commit('getUserToken', data);
+  },
+
   async getAllMovies({ commit }) {
     const { data } = await axios.get(process.env.VUE_APP_DDBB_MOVIES_URL);
     commit('getAllMovies', data);
