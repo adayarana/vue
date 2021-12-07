@@ -44,6 +44,10 @@ button {
     border-radius: 50em;
     transition: background linear 1s;
     box-shadow: 1px 0.5px 0.5px 0.5px $accent;
+    vertical-align: middle;
+    touch-action: manipulation;
+    white-space: nowrap;
+    user-select: none;
 }
 
 button:hover {
@@ -71,6 +75,16 @@ input:hover {
 
 input:focus {
     border: 3px solid $primary;
+  }
+
+input::placeholder {
+    color: $accent;
+    font-style: italic;
+  }
+
+::selection {
+    background-color: $accent;
+    color: $secondary;
   }
 
 label {
