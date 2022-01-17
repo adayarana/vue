@@ -3,12 +3,16 @@
       <div v-if="shows.length > 0">
         <section class="shows-container__slider">
           <figure class="slider__figure">
-            <img
+            <router-link
             v-for="(show, index) in shows"
             :key="index"
+            :to="{ name: 'Show', params: { id: show.id, show: JSON.stringify(show) }}">
+            <img
             class="figure__img-slider"
             :src="show.image.medium"
-            :alt="show.name">
+            :alt="show.name"
+            >
+            </router-link>
           </figure>
         </section>
       </div>

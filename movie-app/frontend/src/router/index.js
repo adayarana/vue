@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import state from '../store/state';
 import Home from '../views/Home.vue';
+import Show from '../views/Show.vue';
 import Filmography from '../views/Filmography.vue';
 import Log from '../views/Log.vue';
 import Signup from '../views/Signup.vue';
@@ -10,6 +11,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/shows/:id',
+    name: 'Show',
+    component: Show,
+    props: true
   },
   {
     path: '/filmography',
@@ -39,6 +46,16 @@ const routes = [
         next();
       }
     }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/:pathMatch(.*)',
+    name: 'Home',
+    component: Home
   }
 ];
 
