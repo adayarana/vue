@@ -66,26 +66,30 @@ input {
     transition: background linear 1s;
     margin: 0.5rem;
     padding: 0.25rem;
-  }
+}
 
 input:hover {
     background: $primary;
     color: $secondary;
-  }
+}
 
 input:focus {
     border: 3px solid $primary;
-  }
+}
 
 input::placeholder {
     color: $accent;
     font-style: italic;
-  }
+}
+
+input[type="checkbox"] {
+  accent-color: $accent;
+}
 
 ::selection {
     background-color: $accent;
     color: $secondary;
-  }
+}
 
 label {
   margin: 0.5rem;

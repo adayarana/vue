@@ -71,6 +71,10 @@ export default {
         background: $accent-hover;
       }
     }
+
+    .info__genres {
+      writing-mode: tb-rl;
+    }
   }
 
 }
